@@ -1,4 +1,24 @@
+server:
+  port: 8080
 
+debug: true
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    driver-class-name: ${auto.datasource.driver-class-name}
+    url: jdbc:mysql://${auto.datasource.host}:${auto.datasource.port}/${auto.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${auto.datasource.username}
+    password: ${auto.datasource.password}
+  redis:
+    host: ${auto.redis.host}
+    port: ${auto.redis.port}
+    password: ${auto.redis.password}
+    #数据库 --- 默认给了16个数据库，不同数据库的数据是完全隔离的
+    database: ${auto.redis.database}
 
 mybatis:
   #mapper配置文件
@@ -12,8 +32,15 @@ mybatis:
 auto:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    secret-key: itcast
+    secret-key: auto
     # 设置jwt过期时间
     ttl: 7200000
     # 设置前端传递过来的令牌名称
     token-name: token
+
+
+
+xunfei:
+  client:
+    appid: 3bdbf21d
+    apikey: 091bbf9877b73fdbbbcd96c881d3195d

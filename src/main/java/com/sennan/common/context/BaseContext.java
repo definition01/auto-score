@@ -1,17 +1,17 @@
 package com.sennan.common.context;
 
 public class BaseContext {
-    public static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+    private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
-    public static void setCurrentId(Long id) {
-        threadLocal.set(id);
+    public static void setCurrentName(String username) {
+        threadLocal.set(username);
     }
 
-    public static Long getCurrentId() {
+    public static String getCurrentName() {
         return threadLocal.get();
     }
 
-    public static void removeCurrentId() {
+    public static void removeCurrentName() {
         threadLocal.remove();
     }
 }

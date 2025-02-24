@@ -17,12 +17,12 @@ public class JwtProperties {
     private String tokenName;
 
 
-    public String getSecretKey() {
+    public  String getSecretKey() {
         return secretKey;
     }
 
     public void setSecretKey(String secretKey) {
-        secretKey = secretKey;
+        this.secretKey = secretKey;
     }
 
     public long getTtl() {
@@ -30,7 +30,7 @@ public class JwtProperties {
     }
 
     public void setTtl(long ttl) {
-        ttl = ttl;
+        this.ttl = ttl;
     }
 
     public String getTokenName() {
@@ -38,7 +38,7 @@ public class JwtProperties {
     }
 
     public void setTokenName(String tokenName) {
-        tokenName = tokenName;
+        this.tokenName = tokenName;
     }
 
 

@@ -4,6 +4,12 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+
+### 特定包忽略 ###
+/src/main/java/com.sennan/common/util/WebOcrUtil
+/src/main/java/com/sennan/common/properties/XunFeiProperties
+/src/main/resources/application.yml
+
 ### STS ###
 .apt_generated
 .classpath

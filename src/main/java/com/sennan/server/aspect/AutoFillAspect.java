@@ -56,21 +56,21 @@ public class AutoFillAspect {
 
         //为获取到的实体对象中的公共属性进行准备赋值数据
         LocalDateTime now = LocalDateTime.now();
-        Long currentId = BaseContext.getCurrentId();
+        String currentName = BaseContext.getCurrentName();
 
         //根据当前不同的操作类型，为对应的属性通过反射赋值
         if (operationType == OperationType.INSERT) {
             //四个公共字段赋值
             try {
                 Method setCreateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);
-                Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
+                Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, String.class);
                 Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);
-                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);
+                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, String.class);
                 //通过反射为对象属性赋值
                 setCreateTime.invoke(entity, now);
-                setCreateUser.invoke(entity, currentId);
+                setCreateUser.invoke(entity, currentName);
                 setUpdateTime.invoke(entity, now);
-                setUpdateUser.invoke(entity, currentId);
+                setUpdateUser.invoke(entity, currentName);
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -79,11 +79,11 @@ public class AutoFillAspect {
             //为两个字段赋值
             try {
                 Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);
-                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);
+                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, String.class);
 
                 //通过反射为对象属性赋值
                 setUpdateTime.invoke(entity, now);
-                setUpdateUser.invoke(entity, currentId);
+                setUpdateUser.invoke(entity, currentName);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
