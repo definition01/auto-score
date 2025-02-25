@@ -44,3 +44,9 @@ xunfei:
   client:
     appid: 3bdbf21d
     apikey: 091bbf9877b73fdbbbcd96c881d3195d
+
+aliyun:
+  oss:
+    end-point: https://oss-cn-beijing.aliyuncs.com
+    bucket-name: auto-avatar
+    region: cn-beijing

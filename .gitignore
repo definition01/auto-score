@@ -9,6 +9,8 @@ target/
 /src/main/java/com.sennan/common/util/WebOcrUtil
 /src/main/java/com/sennan/common/properties/XunFeiProperties
 /src/main/resources/application.yml
+/src/main/java/com/sennan/common/util/Ossutil
+/src/main/java/com/sennan/common/properties/OssProperties
 
 ### STS ###
 .apt_generated

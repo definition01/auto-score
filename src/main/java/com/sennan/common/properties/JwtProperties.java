@@ -1,8 +1,11 @@
 package com.sennan.common.properties;
 
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+/**
+ * jwt令牌配置
+ */
 
 
 @ConfigurationProperties(prefix = "auto.jwt")

@@ -28,12 +28,16 @@ public class UserController {
     @Autowired
     JwtProperties jwtProperties;
 
+
+
     @ApiOperation("注册新用户")
     @PostMapping("/register")
     public ApiResponse register(@RequestBody UserDto userDto){
         userService.register(userDto);
         return ApiResponse.success("新建成功");
     }
+
+    
 
     @ApiOperation("用户登录")
     @PostMapping("/login")
