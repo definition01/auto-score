@@ -66,12 +66,9 @@ public class WebOcrUtil {
 		return header;
 	}
 
-	public String recognize(String imagePath) throws IOException,ParseException{
-		Map<String, String> header = constructHeader("en", "false");
-		// 读取图像文件，转二进制数组，然后Base64编码
-		byte[] imageByteArray = FileUtil.read2ByteArray("D:\\picture\\1.jpg");
-		String imageBase64 = new String(Base64.encodeBase64(imageByteArray), "UTF-8");
-		String bodyParam = "image=" + imageBase64;
+	public String recognize(String base64Image, String language, String location) throws IOException, ParseException {
+		Map<String, String> header = constructHeader(language, location);
+		String bodyParam = "image=" + base64Image;
 		String result = HttpUtil.doPost(WEBOCR_URL, header, bodyParam);
 		return result;
 	}
