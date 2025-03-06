@@ -3,6 +3,17 @@ package com.sennan.pojo.dto;
 public class UserDto {
     public String username;
     private String password;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 
     public String getUsername() {
         return username;
@@ -21,8 +32,8 @@ public class UserDto {
         this.password = password;
     }
 
-    public UserDto( String username, String password) {
-
+    public UserDto( int id, String username, String password) {
+        this.id=id;
         this.username = username;
         this.password = password;
     }

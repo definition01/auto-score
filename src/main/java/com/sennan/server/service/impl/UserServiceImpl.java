@@ -6,6 +6,7 @@ import com.sennan.common.exception.LoginFailedException;
 import com.sennan.common.exception.RegisterFailedException;
 import com.sennan.pojo.dto.UserDto;
 import com.sennan.pojo.entity.User;
+import com.sennan.pojo.vo.UserVo;
 import com.sennan.server.mapper.UserMapper;
 import com.sennan.server.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -38,8 +39,8 @@ public class UserServiceImpl implements UserService {
             user1.setCreateTime(LocalDateTime.now());
             user1.setUpdateTime(LocalDateTime.now());
             BeanUtils.copyProperties(userDto, user1);
-            user1.setPassword(userDto.getPassword());
-            userMapper.update(user1);
+            user1.setPassword(password);
+            userMapper.add(user1);
         }else{
             throw new RegisterFailedException(MessageConstant.ALREADY_EXISTS);
         }
@@ -48,9 +49,7 @@ public class UserServiceImpl implements UserService {
     /**
      * 用户登录
      * @param userDto
-     * TODO
      */
-    @Override
     public User login(UserDto userDto) {
 
         User user = userMapper.findByName(userDto.getUsername());
@@ -68,7 +67,30 @@ public class UserServiceImpl implements UserService {
             return user;
         }
 
+    }
 
+    /**
+     * 修改用户信息
+     * @param userDto
+     */
+    public void update(UserDto userDto) {
+        String password = userDto.getPassword();
+        password=DigestUtils.md5DigestAsHex(password.getBytes());
+        userDto.setPassword(password);
+        User user = new User();
+        BeanUtils.copyProperties(userDto,user);
+        userMapper.update(user);
+    }
+
+    /**
+     * 根据id查找用户信息
+     * @param id
+     * @return
+     */
+    public UserVo getById(int id) {
+        UserVo userVo = userMapper.getById(id);
+        userVo.setPassword("********");
+        return userVo;
     }
 
 

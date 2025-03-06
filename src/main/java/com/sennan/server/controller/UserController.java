@@ -56,11 +56,21 @@ public class UserController {
         return ApiResponse.success(userVo);
     }
 
+
     @ApiOperation("修改信息")
     @PutMapping("/insert")
-    public ApiResponse update(@PathVariable String username)
+    public ApiResponse update(@RequestBody UserDto userDto)
     {
+        userService.update(userDto);
         return ApiResponse.success("修改成功");
+    }
+
+    @ApiOperation("根据id查找用户")
+    @PutMapping("/{id}")
+    public ApiResponse getById(@PathVariable int id)
+    {
+        UserVo userVo = userService.getById(id);
+        return ApiResponse.success(userVo);
     }
 
 }
