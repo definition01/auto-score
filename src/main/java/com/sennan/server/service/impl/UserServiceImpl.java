@@ -80,10 +80,8 @@ public class UserServiceImpl implements UserService {
         password=DigestUtils.md5DigestAsHex(password.getBytes());
         userDto.setPassword(password);
         User user = new User();
-        int id = userMapper.getByUserName(BaseContext.getCurrentName()).getId();
-        user.setUsername(userDto.getUsername());
-        user.setPassword(password);
-        user.setId(id);
+        BeanUtils.copyProperties(user,userDto);
+        user.setId(userMapper.getByUserName(BaseContext.getCurrentName()).getId());
         userMapper.update(user);
     }
 
