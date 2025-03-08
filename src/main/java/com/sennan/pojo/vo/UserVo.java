@@ -3,7 +3,8 @@ package com.sennan.pojo.vo;
 public class UserVo {
     public String userName;
     public String password;
-    public String token;
+    private int id;
+
 
     public String getUserName() {
         return userName;
@@ -21,11 +22,11 @@ public class UserVo {
         this.password = password;
     }
 
-    public String getToken() {
-        return token;
+    public int getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setId(int id) {
+        this.id = id;
     }
 }

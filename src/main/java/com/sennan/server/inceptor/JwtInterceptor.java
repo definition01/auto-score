@@ -1,7 +1,6 @@
 package com.sennan.server.inceptor;
 
 import com.sennan.common.properties.JwtProperties;
-import com.sennan.common.constant.JwtClaimsConstant;
 import com.sennan.common.context.BaseContext;
 import com.sennan.common.util.JwtUtil;
 import io.jsonwebtoken.Claims;

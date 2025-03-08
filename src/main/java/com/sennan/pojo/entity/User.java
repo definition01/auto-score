@@ -60,13 +60,6 @@ public class User {
     }
 
 
-    public User(int id, String username, String password, LocalDateTime createTime, LocalDateTime updateTime) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
 
     public User() {
     }

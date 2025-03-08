@@ -1,5 +1,7 @@
 package com.sennan.common.util;
 
+import org.springframework.stereotype.Component;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.io.InputStream;
 /**
  * 文件操作工具类
  */
+@Component
 public class FileUtil {
 	/**
 	 * 读取文件内容为二进制数组

@@ -2,6 +2,7 @@ package com.sennan.server.service.impl;
 
 
 import com.sennan.common.constant.FileUploadConstant;
+import com.sennan.common.util.JsonUtil;
 import com.sennan.common.util.WebOcrUtil;
 import com.sennan.server.service.TextExtractionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Base64;
+import java.util.List;
 
 @Service
 public class TextExtractionImplService implements TextExtractionService {
+
     @Autowired
     WebOcrUtil webOcrUtil;
+
+    @Autowired
+    JsonUtil jsonUtil;
 
     /**
      * 将文字转为字节
@@ -36,6 +42,9 @@ public class TextExtractionImplService implements TextExtractionService {
             // 调用webOcrUtil的recognize方法前，需要修改该方法以接受base64字符串而非文件路径
             // 假设我们修改了recognize方法，使其可以接受base64字符串作为输入
             String result = webOcrUtil.recognize(imageBase64, "cn|en", "false");
+
+            //将json格式转换为字符串格式
+            result = jsonUtil.convert(result);
 
             // 返回识别结果
             return result;

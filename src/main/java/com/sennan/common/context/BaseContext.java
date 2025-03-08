@@ -3,8 +3,9 @@ package com.sennan.common.context;
 public class BaseContext {
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
+
     public static void setCurrentName(String username) {
-        threadLocal.set(username);
+       threadLocal.set(username);
     }
 
     public static String getCurrentName() {
@@ -14,4 +15,5 @@ public class BaseContext {
     public static void removeCurrentName() {
         threadLocal.remove();
     }
+
 }

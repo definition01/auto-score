@@ -2,6 +2,7 @@ package com.sennan.server.service.impl;
 
 
 import com.sennan.common.constant.MessageConstant;
+import com.sennan.common.context.BaseContext;
 import com.sennan.common.exception.LoginFailedException;
 import com.sennan.common.exception.RegisterFailedException;
 import com.sennan.pojo.dto.UserDto;
@@ -64,6 +65,7 @@ public class UserServiceImpl implements UserService {
         {
             throw new LoginFailedException(MessageConstant.PASSWORD_ERROR);
         }else {
+
             return user;
         }
 
@@ -78,18 +80,23 @@ public class UserServiceImpl implements UserService {
         password=DigestUtils.md5DigestAsHex(password.getBytes());
         userDto.setPassword(password);
         User user = new User();
-        BeanUtils.copyProperties(userDto,user);
+        int id = userMapper.getByUserName(BaseContext.getCurrentName()).getId();
+        user.setUsername(userDto.getUsername());
+        user.setPassword(password);
+        user.setId(id);
         userMapper.update(user);
     }
 
     /**
-     * 根据id查找用户信息
-     * @param id
+     * 根据名字查找用户信息
      * @return
      */
-    public UserVo getById(int id) {
-        UserVo userVo = userMapper.getById(id);
+    public UserVo getByUserName() {
+        User user = userMapper.getByUserName(BaseContext.getCurrentName());
+        UserVo userVo = new UserVo();
+        userVo.setUserName(user.getUsername());
         userVo.setPassword("********");
+        userVo.setId(user.getId());
         return userVo;
     }
 

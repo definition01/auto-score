@@ -9,21 +9,21 @@ public class XunFeiProperties {
     /**
      * 讯飞大模型秘钥
      */
-    private static String appid;
-    private static String apikey;
+    private String appid;
+    private String apikey;
 
-    public static String getAppid() {
+    public String getAppid() {
         return appid;
     }
 
-    public static String getApikey() {
+    public String getApikey() {
         return apikey;
     }
-    public static void setApikey(String apikey) {
-        XunFeiProperties.apikey = apikey;
+    public void setApikey(String apikey) {
+       this.apikey = apikey;
     }
 
-    public static void setAppid(String appid) {
-        XunFeiProperties.appid = appid;
+    public void setAppid(String appid) {
+        this.appid = appid;
     }
 }

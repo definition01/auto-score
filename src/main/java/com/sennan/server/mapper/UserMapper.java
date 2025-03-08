@@ -34,6 +34,7 @@ public interface UserMapper {
     +"(#{username},#{password},#{createUser},#{updateUser},#{createTime},#{updateTime})")
     void add(User user);
 
+
     /**
      * 修改员工信息
      * @param user
@@ -44,9 +45,9 @@ public interface UserMapper {
 
 
     /**
-     * 根据id查询用户
-     * @param id
+     * 根据username询用户
+     * @param username
      */
-    @Select("select * from users where id = #{id}")
-    UserVo getById(int id);
+    @Select("select * from users where username = #{username}")
+    User getByUserName(String username);
 }

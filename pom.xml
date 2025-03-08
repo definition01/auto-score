@@ -137,6 +137,39 @@
 			<artifactId>jaxb-runtime</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+
+			<!-- Apache POI for .doc -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-scratchpad</artifactId>
+				<version>5.2.3</version> <!-- 确认此版本或稍后的小版本更新适合您的需求 -->
+			</dependency>
+
+			<!-- 如果还需要处理.docx, 可以保留poi-ooxml依赖 -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>5.2.3</version>
+			</dependency>
+
+			<!-- For handling compressed XML files in .docx -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-compress</artifactId>
+				<version>1.21</version>
+			</dependency>
+
+			<!-- Codec for encryption/decryption -->
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.15</version>
+			</dependency>
+           <!-- jackson依赖，用于处理json格式数据 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

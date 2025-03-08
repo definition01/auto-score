@@ -15,7 +15,7 @@ public interface UserService {
     void register(UserDto userDto);
 
     /**
-     * 创建新用户
+     * 登录
      * @param userDto
      */
     User login(UserDto userDto);
@@ -29,9 +29,8 @@ public interface UserService {
     void update(UserDto userDto);
 
     /**
-     * 根据id查找用户
-     * @param id
+     * 根据名字查找用户
      * @return
      */
-    UserVo getById(int id);
+    UserVo getByUserName();
 }
